@@ -5,7 +5,7 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | Package | What it does | Replaces |
 | --- | --- | --- |
 | [`use-live-announcer`](packages/use-live-announcer) | Announce alarms & changes to screen readers (aria-live) | hand-written live regions, react-aria-live |
-| [`envguard`](packages/envguard) | `.env` loading + validation + types | dotenv + envalid / zod env |
+| [`dotenv-validate`](packages/dotenv-validate) | `.env` loading + validation + types | dotenv + envalid / zod env |
 | [`cx-variants`](packages/cx-variants) | `cn()` + variants + Tailwind merge | clsx + cva + tailwind-merge |
 | [`fetch-kit-ts`](packages/fetch-kit-ts) | 2 KB fetch client with retry, timeout, interceptors | axios, ky |
 | [`duration-i18n`](packages/duration-i18n) | Durations & "time ago" in 100+ languages, zero locale files | ms, humanize-duration, pretty-ms |

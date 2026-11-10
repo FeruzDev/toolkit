@@ -1,13 +1,13 @@
-# envguard
+# dotenv-validate
 
-[![npm](https://img.shields.io/npm/v/envguard.svg)](https://www.npmjs.com/package/envguard)
-[![size](https://img.shields.io/bundlephobia/minzip/envguard)](https://bundlephobia.com/package/envguard)
-[![license](https://img.shields.io/npm/l/envguard.svg)](./LICENSE)
+[![npm](https://img.shields.io/npm/v/dotenv-validate.svg)](https://www.npmjs.com/package/dotenv-validate)
+[![size](https://img.shields.io/bundlephobia/minzip/dotenv-validate)](https://bundlephobia.com/package/dotenv-validate)
+[![license](https://img.shields.io/npm/l/dotenv-validate.svg)](./LICENSE)
 
 **`.env` loading + validation + TypeScript types in one tiny package.** Replaces `dotenv` + `envalid` / `zod` env schemas. Zero dependencies.
 
 ```ts
-import { createEnv, str, port, url, bool, oneOf } from 'envguard';
+import { createEnv, str, port, url, bool, oneOf } from 'dotenv-validate';
 
 export const env = createEnv({
   NODE_ENV: oneOf(['development', 'production', 'test'], { default: 'development' }),
@@ -35,12 +35,12 @@ Fix them in your .env file or the environment.
 ## Install
 
 ```bash
-npm install envguard
+npm install dotenv-validate
 ```
 
 ## Why
 
-| | envguard | dotenv | envalid | zod + dotenv | @t3-oss/env |
+| | dotenv-validate | dotenv | envalid | zod + dotenv | @t3-oss/env |
 | --- | --- | --- | --- | --- | --- |
 | Reads `.env` files | ✅ | ✅ | ❌ | needs dotenv | ❌ |
 | Validation + type inference | ✅ | ❌ | ✅ | ✅ | ✅ |
@@ -101,7 +101,7 @@ URL=http://${HOST:-localhost}:${PORT}
 
 ```ts
 import { writeFileSync } from 'node:fs';
-import { envExample } from 'envguard';
+import { envExample } from 'dotenv-validate';
 
 writeFileSync('.env.example', envExample(schema));
 ```
@@ -115,7 +115,7 @@ export const env = createEnv({ VITE_API_URL: url() }, { env: import.meta.env });
 ### Custom validator
 
 ```ts
-import { makeValidator } from 'envguard';
+import { makeValidator } from 'dotenv-validate';
 
 const hexColor = makeValidator('hex color', (raw) => {
   if (!/^#[0-9a-f]{6}$/i.test(raw)) throw new Error('must look like #ff0000');

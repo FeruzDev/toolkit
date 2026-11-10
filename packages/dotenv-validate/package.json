@@ -1,5 +1,5 @@
 {
-  "name": "envguard",
+  "name": "dotenv-validate",
   "version": "1.0.0",
   "description": "Load .env files and validate environment variables with full TypeScript types and clear error messages. dotenv + envalid/zod-env in one tiny zero-dependency package.",
   "keywords": [
@@ -21,9 +21,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FeruzDev/toolkit.git",
-    "directory": "packages/envguard"
+    "directory": "packages/dotenv-validate"
   },
-  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/envguard#readme",
+  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/dotenv-validate#readme",
   "bugs": {
     "url": "https://github.com/FeruzDev/toolkit/issues"
   },

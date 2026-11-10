@@ -262,7 +262,7 @@ export function loadDotenvFiles(paths: string[], vars: Record<string, string | u
  * Reports **all** problems at once.
  *
  * @example
- * import { createEnv, str, port, url, bool, oneOf } from 'envguard';
+ * import { createEnv, str, port, url, bool, oneOf } from 'dotenv-validate';
  *
  * export const env = createEnv({
  *   NODE_ENV: oneOf(['development', 'production', 'test'], { default: 'development' }),

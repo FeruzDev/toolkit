@@ -93,7 +93,7 @@ describe('createEnv', () => {
   });
 
   it('loads .env files: env > first file > later files', () => {
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'envguard-'));
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'dotenv-validate-'));
     fs.writeFileSync(path.join(dir, '.env'), 'A=from-env\nB=from-env\nC=from-env\n');
     fs.writeFileSync(path.join(dir, '.env.local'), 'B=from-local\nC=from-local\n');
     const env = createEnv(
