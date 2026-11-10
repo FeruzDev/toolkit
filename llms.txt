@@ -10,3 +10,6 @@
 - [duration-i18n](https://github.com/FeruzDev/toolkit/tree/main/packages/duration-i18n/llms.txt): format durations and relative time in any Intl language; parse durations; ms() compatible.
 - [tiny-uuidv7](https://github.com/FeruzDev/toolkit/tree/main/packages/tiny-uuidv7/llms.txt): monotonic time-sortable UUIDv7 for database keys.
 - [temporal-dates](https://github.com/FeruzDev/toolkit/tree/main/packages/temporal-dates/llms.txt): date-fns-style helpers on the Temporal API (native or polyfill).
+- [use-stale-data](https://github.com/FeruzDev/toolkit/tree/main/packages/use-stale-data/llms.txt): React hook — data freshness status and live age.
+- [use-throttled-stream](https://github.com/FeruzDev/toolkit/tree/main/packages/use-throttled-stream/llms.txt): React hook — batch WebSocket/SSE streams into throttled state.
+- [use-offline-actions](https://github.com/FeruzDev/toolkit/tree/main/packages/use-offline-actions/llms.txt): React hook — offline action queue with retries and sync.

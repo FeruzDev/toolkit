@@ -11,6 +11,9 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | [`duration-i18n`](packages/duration-i18n) | Durations & "time ago" in 100+ languages, zero locale files | ms, humanize-duration, pretty-ms |
 | [`tiny-uuidv7`](packages/tiny-uuidv7) | Monotonic, time-sortable UUIDv7 | uuid, ulid, nanoid |
 | [`temporal-dates`](packages/temporal-dates) | date-fns-style helpers on the Temporal API | date-fns, dayjs, moment |
+| [`use-stale-data`](packages/use-stale-data) | fresh / warning / stale status + live data age | manual timers |
+| [`use-throttled-stream`](packages/use-throttled-stream) | Batch WebSocket/SSE messages into throttled renders | custom buffering |
+| [`use-offline-actions`](packages/use-offline-actions) | Offline outbox: persist, retry, sync in order | hand-written queues, Workbox background sync |
 
 Every package ships an `llms.txt` with a compact usage guide for AI coding assistants (`node_modules/<package>/llms.txt`), full JSDoc with examples, and TypeScript types.
 

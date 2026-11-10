@@ -1,0 +1,16 @@
+# use-stale-data
+
+> React hook: data freshness status ('fresh' | 'warning' | 'stale' | 'unknown') + live age from a timestamp or a changing value. For dashboards, live feeds, React Query/SWR "last updated" indicators.
+
+## Install
+npm install use-stale-data
+
+## API
+`useStaleData(source: { updatedAt?: number | Date | null; data?: unknown }, options?: { staleAfter?: number /*60000*/, warnAfter?: number, tick?: number /*0*/, onStale?(age), onFresh?(), enabled?: boolean })`
+→ `{ status, isStale, isWarning, age: number | null, updatedAt: Date | null, touch(): void }`
+
+## Examples
+```tsx
+const { status, age } = useStaleData({ updatedAt: query.dataUpdatedAt }, { warnAfter: 20_000, staleAfter: 60_000, tick: 1000 });
+const { isStale } = useStaleData({ data: lastWsMessage }, { staleAfter: 15_000, onStale: () => reconnect() });
+```

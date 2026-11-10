@@ -1,0 +1,18 @@
+# use-throttled-stream
+
+> React hook that batches high-frequency messages (WebSocket, EventSource, BroadcastChannel, Worker, or a subscribe function) into throttled state updates. Modes: append (sliding window), latest, reduce. Prevents re-render storms in realtime dashboards, chats, trading UIs, log tails.
+
+## Install
+npm install use-throttled-stream
+
+## API
+`useThrottledStream<T>(source, { interval?: number /*100*/, mode?: 'append', maxItems?: number /*1000*/, parse?, filter?, enabled? })` → `{ data: T[], push, flush, clear, stats }`
+`useThrottledStream<T>(source, { mode: 'latest', ... })` → `{ data: T | undefined, ... }`
+`useThrottledStream<T, S>(source, { mode: 'reduce', reducer: (state: S, batch: T[]) => S, initialState: S })` → `{ data: S, ... }`
+source: WebSocket | EventSource | any { addEventListener('message') } | ((emit) => unsubscribe) | null
+
+## Example
+```tsx
+const ws = useMemo(() => new WebSocket(url), [url]);
+const { data: lines } = useThrottledStream<string>(ws, { interval: 100, maxItems: 500 });
+```

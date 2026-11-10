@@ -1,0 +1,22 @@
+# use-offline-actions
+
+> React hook for an offline-first action queue (outbox): persist actions in localStorage while offline, send them in order when online, retries with backoff, PermanentError to stop retrying, no double sending (Web Locks + in-tab lock). Also `useOnlineStatus()`.
+
+## Install
+npm install use-offline-actions
+
+## API
+`useOfflineQueue<P>({ handler: (action) => Promise<unknown>, key?: string, maxAttempts?: number /*5*/, retryDelay?: (attempt) => ms, storage?: Storage | null, onSuccess?, onFailure? })`
+→ `{ enqueue(type, payload): QueuedAction, pending, failed, isOnline, isSyncing, sync(), retry(id), remove(id), clear() }`
+`class PermanentError extends Error` — throw from handler for non-retryable errors.
+QueuedAction: `{ id (uuid, use as idempotency key), type, payload, createdAt, attempts, status: 'pending'|'failed', error?, nextAttemptAt? }`
+`useOnlineStatus(): boolean`
+
+## Example
+```tsx
+const outbox = useOfflineQueue<Note>({
+  key: 'notes',
+  handler: (a) => api.post('/notes', a.payload, { headers: { 'Idempotency-Key': a.id } }),
+});
+outbox.enqueue('createNote', { text });
+```
