@@ -14,6 +14,9 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | [`use-stale-data`](packages/use-stale-data) | fresh / warning / stale status + live data age | manual timers |
 | [`use-throttled-stream`](packages/use-throttled-stream) | Batch WebSocket/SSE messages into throttled renders | custom buffering |
 | [`use-offline-actions`](packages/use-offline-actions) | Offline outbox: persist, retry, sync in order | hand-written queues, Workbox background sync |
+| [`use-idle-redirect`](packages/use-idle-redirect) | Inactivity warning + auto logout, synced across tabs | react-idle-timer |
+| [`use-visibility-polling`](packages/use-visibility-polling) | Polling that pauses in hidden tabs/offline, no overlap | setInterval + fetch |
+| [`use-previous-diff`](packages/use-previous-diff) | usePrevious + deep diff of what changed | use-previous, deep-diff |
 
 Every package ships an `llms.txt` with a compact usage guide for AI coding assistants (`node_modules/<package>/llms.txt`), full JSDoc with examples, and TypeScript types.
 

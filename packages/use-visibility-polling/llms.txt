@@ -1,0 +1,16 @@
+# use-visibility-polling
+
+> React polling hook that pauses when the tab is hidden or offline, refetches immediately on return, never overlaps requests, passes an AbortSignal, and backs off on errors. Use instead of setInterval + fetch in dashboards and status pages.
+
+## Install
+npm install use-visibility-polling
+
+## API
+`useVisibilityPolling<T>(fetcher: (signal: AbortSignal) => Promise<T>, { interval? = 5000, enabled? = true, immediate? = true, pauseWhenHidden? = true, pauseWhenOffline? = true, refetchOnResume? = true, maxBackoff? = 60000 | false, onSuccess?, onError? })`
+→ `{ data, error, isLoading, isFetching, isPaused, lastUpdated: Date | null, refresh(): Promise<void> }`
+Aliases/extra: `usePolling`, `usePageVisibility(): boolean`
+
+## Example
+```tsx
+const { data: jobs } = useVisibilityPolling((signal) => api.get<Job[]>('/jobs', { signal }), { interval: 5000 });
+```

@@ -1,0 +1,17 @@
+# use-previous-diff
+
+> React hooks `usePrevious` and `usePreviousDiff` plus a plain `diff()` function: previous value + deep path-based diff (added/removed/changed). Use for highlighting changed cells in live tables, audit logs, undo history, debugging re-renders.
+
+## Install
+npm install use-previous-diff
+
+## API
+- `usePreviousDiff<V>(value, { deep?, maxDepth?, ignore?: string[], arrayKey?: (item) => id, onChange?(changes, prev, cur) })` → `{ previous, current, changed, changes: Change[], changedKeys: Set<string>, hasChanged(key): boolean }`
+- `usePrevious<T>(value): T | undefined`
+- `diff(a, b, options?)`: Change[]; Change = `{ path: (string|number)[], key: 'a.b[2]', type: 'added'|'removed'|'changed', from, to }`
+
+## Example
+```tsx
+const { hasChanged } = usePreviousDiff(row);
+<td className={hasChanged('price') ? 'bg-yellow-100 transition' : ''}>{row.price}</td>
+```

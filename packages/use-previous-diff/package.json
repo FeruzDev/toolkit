@@ -1,0 +1,64 @@
+{
+  "name": "use-previous-diff",
+  "version": "1.0.0",
+  "description": "React hooks usePrevious + usePreviousDiff: get the previous value and a deep, path-based diff (added / removed / changed) whenever a value changes. Great for change highlighting, audit trails and debugging re-renders.",
+  "keywords": [
+    "react",
+    "hook",
+    "usePrevious",
+    "previous value",
+    "diff",
+    "deep diff",
+    "object diff",
+    "changes",
+    "why did you render",
+    "highlight changes",
+    "audit",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "FeruzDev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeruzDev/toolkit.git",
+    "directory": "packages/use-previous-diff"
+  },
+  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/use-previous-diff#readme",
+  "bugs": {
+    "url": "https://github.com/FeruzDev/toolkit/issues"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --sourcemap --target es2020 --external react"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

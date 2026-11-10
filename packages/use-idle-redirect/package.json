@@ -1,0 +1,65 @@
+{
+  "name": "use-idle-redirect",
+  "version": "1.0.0",
+  "description": "React hooks for inactivity timeouts: warn before session expiry with a live countdown, then log out / redirect. Synced across browser tabs, throttled, SSR-safe. Bank-style auto logout in a few lines.",
+  "keywords": [
+    "react",
+    "hook",
+    "idle",
+    "idle timer",
+    "inactivity",
+    "auto logout",
+    "session timeout",
+    "redirect",
+    "countdown",
+    "react-idle-timer alternative",
+    "security",
+    "cross tab",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "FeruzDev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeruzDev/toolkit.git",
+    "directory": "packages/use-idle-redirect"
+  },
+  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/use-idle-redirect#readme",
+  "bugs": {
+    "url": "https://github.com/FeruzDev/toolkit/issues"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --sourcemap --target es2020 --external react"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,21 @@
+# use-idle-redirect
+
+> React hooks for inactivity timeout / auto logout: warning stage with live countdown, then onIdle (logout) + redirect with returnTo. Cross-tab sync (BroadcastChannel + localStorage), throttled, background-tab safe. Alternative to react-idle-timer.
+
+## Install
+npm install use-idle-redirect
+
+## API
+- `useIdleRedirect({ timeout?, warningBefore?, redirectTo? = '/login', withReturnTo? = true, onIdle?: () => void | Promise<void>, navigate?: (url) => void, ...useIdleTimer options })`
+- `useIdleTimer({ timeout? = 900000, warningBefore? = 60000, onWarn?, onIdle?, onActive?, events?, crossTab? = true, storageKey?, throttle? = 500, enabled? = true })`
+- Both return `{ status: 'active'|'warning'|'idle', isIdle, isWarning, remaining (ms), lastActive, reset(), pause(), resume() }`
+- `buildIdleRedirectUrl(redirectTo, withReturnTo?)`
+
+## Example
+```tsx
+const { isWarning, remaining, reset } = useIdleRedirect({
+  timeout: 15 * 60_000, warningBefore: 60_000,
+  onIdle: () => api.post('/logout'), navigate: (url) => router.replace(url),
+});
+{isWarning && <Modal>Signing out in {Math.ceil(remaining / 1000)} s <button onClick={reset}>Stay</button></Modal>}
+```
