@@ -20,3 +20,4 @@
 - [use-keyboard-scope](https://github.com/FeruzDev/toolkit/tree/main/packages/use-keyboard-scope/llms.txt): React — scoped keyboard shortcuts.
 - [react-virtual-log](https://github.com/FeruzDev/toolkit/tree/main/packages/react-virtual-log/llms.txt): React — virtualized log viewer for millions of lines.
 - [react-column-resize](https://github.com/FeruzDev/toolkit/tree/main/packages/react-column-resize/llms.txt): React — resizable table columns with persistence.
+- [react-state-views](https://github.com/FeruzDev/toolkit/tree/main/packages/react-state-views/llms.txt): React — loading/empty/error components and AsyncView.

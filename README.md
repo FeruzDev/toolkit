@@ -21,6 +21,7 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | [`use-keyboard-scope`](packages/use-keyboard-scope) | Scoped hotkeys (modals block page shortcuts), sequences | react-hotkeys-hook, mousetrap |
 | [`react-virtual-log`](packages/react-virtual-log) | Log viewer for millions of lines: tail, search, ANSI | react-lazylog, xterm for read-only logs |
 | [`react-column-resize`](packages/react-column-resize) | Resizable table columns + persistence, auto-fit | react-table plugins, custom drag code |
+| [`react-state-views`](packages/react-state-views) | Loading/empty/error views + AsyncView (en/uz/ru) | hand-written if/else in every component |
 
 Every package ships an `llms.txt` with a compact usage guide for AI coding assistants (`node_modules/<package>/llms.txt`), full JSDoc with examples, and TypeScript types.
 

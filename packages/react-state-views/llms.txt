@@ -1,0 +1,20 @@
+# react-state-views
+
+> Ready-made loading / empty / error / skeleton components for React plus <AsyncView> that chooses the right state from React Query, SWR, Apollo or plain state. Delay to avoid spinner flicker, keeps previous data while refetching, retry button, accessible, i18n (en/uz/ru), themeable via CSS variables.
+
+## Install
+npm install react-state-views
+
+## API
+- `<AsyncView query={useQuery(...)} | loading error data, isEmpty?, onRetry?, loadingView?, emptyView?, errorView?(error, retry), empty?: EmptyStateProps, keepPreviousData? = true, loadingDelay?>{(data) => ...}</AsyncView>`
+- `<LoadingState label? />`, `<EmptyState icon? title? description? action? />`, `<ErrorState error? onRetry? title? description? />`, `<Skeleton lines? width? height? circle? />`
+- `<StateViewsProvider labels="en" | "uz" | "ru" | Partial<StateLabels> loadingDelay? unstyled?>`
+- `getErrorMessage(error)`, `isEmptyValue(value)`
+
+## Example
+```tsx
+const q = useQuery({ queryKey: ['todos'], queryFn: getTodos });
+<AsyncView query={q} empty={{ title: 'No todos', action: <AddTodoButton /> }}>
+  {(todos) => <TodoList todos={todos} />}
+</AsyncView>
+```

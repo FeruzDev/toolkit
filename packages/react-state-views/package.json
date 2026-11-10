@@ -1,0 +1,67 @@
+{
+  "name": "react-state-views",
+  "version": "1.0.0",
+  "description": "Ready-made loading, empty and error states for React plus <AsyncView> that picks the right one (works with React Query, SWR or plain state). Accessible, delay-to-avoid-flicker, skeletons, retry, i18n (en/uz/ru) and themeable.",
+  "keywords": [
+    "react",
+    "loading state",
+    "empty state",
+    "error state",
+    "skeleton",
+    "spinner",
+    "async",
+    "react-query",
+    "swr",
+    "suspense",
+    "placeholder",
+    "ui states",
+    "i18n",
+    "accessibility",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "FeruzDev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeruzDev/toolkit.git",
+    "directory": "packages/react-state-views"
+  },
+  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/react-state-views#readme",
+  "bugs": {
+    "url": "https://github.com/FeruzDev/toolkit/issues"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --clean --sourcemap --target es2020 --external react"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

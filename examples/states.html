@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>react-state-views demo</title>
+  <style>body { font-family: system-ui, sans-serif; margin: 24px; background: #fff; } .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; } .card { border: 1px solid #e5e7eb; border-radius: 10px; } .dark { background: #111827; border-color: #374151; }</style>
+  <script type="importmap">{ "imports": { "react": "https://esm.sh/react@18.3.1", "react-dom/client": "https://esm.sh/react-dom@18.3.1/client" } }</script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { StateViewsProvider, LoadingState, EmptyState, ErrorState, Skeleton } from '/packages/react-state-views/dist/index.js';
+    const h = React.createElement;
+    const card = (child, dark) => h('div', { className: 'card' + (dark ? ' dark' : ''), 'data-theme': dark ? 'dark' : undefined }, child);
+    createRoot(document.getElementById('root')).render(
+      h(StateViewsProvider, { labels: 'uz', loadingDelay: 0 },
+        h('div', { className: 'grid' },
+          card(h(LoadingState)),
+          card(h(EmptyState, { action: h('button', { className: 'sv-button' }, "Loyiha qo'shish") })),
+          card(h(ErrorState, { error: new Error('Server 500 qaytardi'), onRetry: () => {} })),
+          card(h('div', { style: { padding: 24, display: 'flex', gap: 12 } }, h(Skeleton, { circle: true }), h(Skeleton, { lines: 3 }))),
+          card(h('div', { className: 'sv-state', 'data-theme': 'dark' }, h(EmptyState)), true),
+          card(h(ErrorState, { onRetry: () => {}, className: '', }), true))));
+  </script>
+</body>
+</html>
