@@ -1,0 +1,34 @@
+name: Deprecate placeholder versions
+
+# npm created a 0.0.0-stage placeholder for every new package. Mark them deprecated (runs when this file changes).
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/deprecate-placeholders.yml']
+  workflow_dispatch:
+
+jobs:
+  deprecate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Deprecate 0.0.0-stage
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          failed=0
+          for p in react-paginate-ts uz-translit react-rtsp-player rtsp-player-server \
+                   use-live-announcer dotenv-validate cx-variants fetch-kit-ts duration-i18n tiny-uuidv7 temporal-dates \
+                   use-stale-data use-throttled-stream use-offline-actions use-idle-redirect use-visibility-polling \
+                   use-previous-diff use-typed-url-state use-keyboard-scope react-virtual-log react-column-resize \
+                   react-state-views use-optimistic-list; do
+            if npm view "$p@0.0.0-stage" version >/dev/null 2>&1; then
+              npm deprecate "$p@0.0.0-stage" "Placeholder created during the first publish. Use 1.0.0 or later." && echo "deprecated $p" || failed=1
+            else
+              echo "skip $p (no placeholder)"
+            fi
+          done
+          exit $failed
