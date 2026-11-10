@@ -21,3 +21,7 @@
 - [react-virtual-log](https://github.com/FeruzDev/toolkit/tree/main/packages/react-virtual-log/llms.txt): React — virtualized log viewer for millions of lines.
 - [react-column-resize](https://github.com/FeruzDev/toolkit/tree/main/packages/react-column-resize/llms.txt): React — resizable table columns with persistence.
 - [react-state-views](https://github.com/FeruzDev/toolkit/tree/main/packages/react-state-views/llms.txt): React — loading/empty/error components and AsyncView.
+- [use-optimistic-list](https://github.com/FeruzDev/toolkit/tree/main/packages/use-optimistic-list/llms.txt): React hook — optimistic CRUD list with safe rollback.
+
+## Full documentation
+- [llms-full.txt](https://github.com/FeruzDev/toolkit/blob/main/llms-full.txt): every package guide in one file.

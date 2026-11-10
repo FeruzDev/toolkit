@@ -1,0 +1,22 @@
+# use-optimistic-list
+
+> React hook for optimistic CRUD lists with per-operation rollback: confirmed items + pending operations. create/update/remove/move apply instantly, reconcile with server responses (real ids), roll back only the failed operation, and dependent edits on not-yet-created items wait for the create.
+
+## Install
+npm install use-optimistic-list
+
+## API
+`useOptimisticList<T>({ initialItems?, getKey? = (i) => i.id, onCreate?(item) => Promise<T|void>, onUpdate?(key, patch, item) => Promise<T|void>, onRemove?(key, item), onMove?(key, toIndex, items), onError?({ opId, type, key, error, item }) })`
+→ `{ items, create(item, { index?, tempKey? }), update(key, patch), remove(key), move(key, toIndex), pendingKeys: Set, isPending(key), errors, clearErrors(), setItems(items | fn) }`
+
+## Example
+```tsx
+const list = useOptimisticList<Task>({
+  initialItems: data ?? [],
+  onCreate: (t) => api.post('/tasks', t),
+  onUpdate: (id, patch) => api.patch(`/tasks/${id}`, patch),
+  onRemove: (id) => api.delete(`/tasks/${id}`),
+  onError: () => toast.error('Change undone'),
+});
+list.update(task.id, { done: true });
+```
