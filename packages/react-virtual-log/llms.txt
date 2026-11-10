@@ -1,0 +1,19 @@
+# react-virtual-log
+
+> React log viewer for millions of lines: virtualization that works beyond browser height limits, follow/tail mode, search highlight, ANSI colors, log-level coloring, line numbers. Includes useLogBuffer for streaming logs (WebSocket, SSE, fetch streams). Use for CI/build logs, server logs, terminals, devtools.
+
+## Install
+npm install react-virtual-log
+
+## API
+- `<LogViewer lines={string[]} lineCount? height? = 400 rowHeight? = 20 follow? = true search?: string | RegExp ansi? = true colorLevels? = true showLineNumbers? = true firstLineNumber? = 1 selectedLine? onLineClick?(i, text) onFollowChange?(bool) theme?: 'dark' | 'light' | LogTheme empty? ref />`
+- ref: `scrollToLine(i, align?)`, `scrollToBottom()`, `scrollToTop()`, `isFollowing()`
+- `useLogBuffer({ maxLines? = 100000, flushInterval? = 50 })` → `{ lines, count, dropped, append(text | string[]), appendStream(chunk), clear() }`
+- `parseAnsi`, `stripAnsi`, `detectLevel`
+
+## Example
+```tsx
+const log = useLogBuffer({ maxLines: 200_000 });
+useEffect(() => { const es = new EventSource('/logs'); es.onmessage = (e) => log.append(e.data); return () => es.close(); }, []);
+<LogViewer lines={log.lines} lineCount={log.count} firstLineNumber={log.dropped + 1} height={600} />
+```

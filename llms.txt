@@ -18,3 +18,4 @@
 - [use-previous-diff](https://github.com/FeruzDev/toolkit/tree/main/packages/use-previous-diff/llms.txt): React hooks — previous value and deep diff.
 - [use-typed-url-state](https://github.com/FeruzDev/toolkit/tree/main/packages/use-typed-url-state/llms.txt): React hook — type-safe state in URL query params.
 - [use-keyboard-scope](https://github.com/FeruzDev/toolkit/tree/main/packages/use-keyboard-scope/llms.txt): React — scoped keyboard shortcuts.
+- [react-virtual-log](https://github.com/FeruzDev/toolkit/tree/main/packages/react-virtual-log/llms.txt): React — virtualized log viewer for millions of lines.

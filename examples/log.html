@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>react-virtual-log demo</title>
+  <style>body { font-family: system-ui, sans-serif; margin: 16px; background: #fff; } .bar { display: flex; gap: 8px; margin: 8px 0; align-items: center; flex-wrap: wrap; }</style>
+  <script type="importmap">{ "imports": { "react": "https://esm.sh/react@18.3.1", "react-dom/client": "https://esm.sh/react-dom@18.3.1/client", "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime" } }</script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    import React, { useEffect, useRef, useState } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { LogViewer, useLogBuffer } from '/packages/react-virtual-log/dist/index.js';
+    const h = React.createElement;
+    const levels = ['INFO', 'INFO', 'INFO', 'DEBUG', 'WARN', 'ERROR'];
+    const big = Array.from({ length: 1_000_000 }, (_, i) =>
+      i % 7 === 0 ? `\x1b[36m2026-11-10 12:00:${String(i % 60).padStart(2, '0')}\x1b[0m \x1b[1;35mworker-${i % 4}\x1b[0m processed job #${i}`
+        : `2026-11-10 12:00:${String(i % 60).padStart(2, '0')} ${levels[i % levels.length]} request ${i} handled in ${(i * 7) % 300}ms`);
+    window.__big = big;
+
+    function App() {
+      const ref = useRef(null);
+      const [q, setQ] = useState('');
+      const [following, setFollowing] = useState(true);
+      const live = useLogBuffer({ maxLines: 1000 });
+      useEffect(() => {
+        let n = 0;
+        const id = setInterval(() => live.append(Array.from({ length: 20 }, () => `${new Date().toISOString()} ${levels[n % 6]} live event ${n++}`)), 100);
+        return () => clearInterval(id);
+      }, []);
+      return h('div', null,
+        h('h3', null, '1,000,000 lines'),
+        h('div', { className: 'bar' },
+          h('input', { placeholder: 'search', value: q, onChange: (e) => setQ(e.target.value) }),
+          h('button', { id: 'top', onClick: () => ref.current.scrollToTop() }, 'Top'),
+          h('button', { id: 'mid', onClick: () => ref.current.scrollToLine(500000, 'center') }, 'Line 500,000'),
+          h('button', { id: 'bottom', onClick: () => ref.current.scrollToBottom() }, 'Bottom')),
+        h(LogViewer, { ref, lines: big, height: 300, search: q, follow: false, 'aria-label': 'big' }),
+        h('h3', null, `Live stream (follow: ${following})`),
+        h(LogViewer, { lines: live.lines, lineCount: live.count, firstLineNumber: live.dropped + 1, height: 220, theme: 'light', onFollowChange: setFollowing, 'aria-label': 'live' }));
+    }
+    createRoot(document.getElementById('root')).render(h(App));
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "name": "react-virtual-log",
+  "version": "1.0.0",
+  "description": "Fast React log viewer for millions of lines: virtualized (beyond browser height limits), follow/tail mode, search highlight, ANSI colors, log-level coloring, line numbers and a streaming buffer hook.",
+  "keywords": [
+    "react",
+    "log viewer",
+    "logs",
+    "virtual list",
+    "virtualized",
+    "virtual scroll",
+    "tail",
+    "ansi",
+    "terminal",
+    "console",
+    "streaming",
+    "large list",
+    "devtools",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "FeruzDev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeruzDev/toolkit.git",
+    "directory": "packages/react-virtual-log"
+  },
+  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/react-virtual-log#readme",
+  "bugs": {
+    "url": "https://github.com/FeruzDev/toolkit/issues"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --clean --sourcemap --target es2020 --external react"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
