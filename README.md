@@ -8,6 +8,9 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | [`envguard`](packages/envguard) | `.env` loading + validation + types | dotenv + envalid / zod env |
 | [`cx-variants`](packages/cx-variants) | `cn()` + variants + Tailwind merge | clsx + cva + tailwind-merge |
 | [`fetch-kit-ts`](packages/fetch-kit-ts) | 2 KB fetch client with retry, timeout, interceptors | axios, ky |
+| [`duration-i18n`](packages/duration-i18n) | Durations & "time ago" in 100+ languages, zero locale files | ms, humanize-duration, pretty-ms |
+| [`tiny-uuidv7`](packages/tiny-uuidv7) | Monotonic, time-sortable UUIDv7 | uuid, ulid, nanoid |
+| [`temporal-dates`](packages/temporal-dates) | date-fns-style helpers on the Temporal API | date-fns, dayjs, moment |
 
 Every package ships an `llms.txt` with a compact usage guide for AI coding assistants (`node_modules/<package>/llms.txt`), full JSDoc with examples, and TypeScript types.
 
