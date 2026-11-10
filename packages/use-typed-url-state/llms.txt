@@ -1,0 +1,17 @@
+# use-typed-url-state
+
+> Type-safe React state synced to URL query params (History API). Param builders for string/number/integer/boolean/date/enum/array/json with defaults omitted from URL; invalid values fall back to defaults. Lightweight alternative to nuqs / use-query-params; works with Next.js App Router.
+
+## Install
+npm install use-typed-url-state
+
+## API
+- `useUrlState(schema, { history?: 'replace' | 'push', serverSearch?: string })` → `[values, setValues]`; `setValues(patch | (prev) => patch, { history? })`; `null` in patch resets to default.
+- `param.string(d?)`, `param.number(d?)`, `param.integer(d?)`, `param.boolean(d?)`, `param.date(d?)`, `param.enum([...], d)`, `param.array(itemParam, { separator?, default? })`, `param.json(d)`
+- `parseUrlState(schema, search)`, `serializeUrlState(schema, values, base?)` → URLSearchParams
+
+## Example
+```tsx
+const [f, setF] = useUrlState({ q: param.string(''), page: param.integer(1), status: param.enum(['all', 'open', 'closed'], 'all') });
+setF({ status: 'open', page: 1 });
+```

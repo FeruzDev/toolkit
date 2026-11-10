@@ -16,3 +16,5 @@
 - [use-idle-redirect](https://github.com/FeruzDev/toolkit/tree/main/packages/use-idle-redirect/llms.txt): React hooks — idle warning countdown, auto logout and redirect, cross-tab.
 - [use-visibility-polling](https://github.com/FeruzDev/toolkit/tree/main/packages/use-visibility-polling/llms.txt): React hook — polling paused in hidden tabs/offline.
 - [use-previous-diff](https://github.com/FeruzDev/toolkit/tree/main/packages/use-previous-diff/llms.txt): React hooks — previous value and deep diff.
+- [use-typed-url-state](https://github.com/FeruzDev/toolkit/tree/main/packages/use-typed-url-state/llms.txt): React hook — type-safe state in URL query params.
+- [use-keyboard-scope](https://github.com/FeruzDev/toolkit/tree/main/packages/use-keyboard-scope/llms.txt): React — scoped keyboard shortcuts.

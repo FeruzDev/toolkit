@@ -17,6 +17,8 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | [`use-idle-redirect`](packages/use-idle-redirect) | Inactivity warning + auto logout, synced across tabs | react-idle-timer |
 | [`use-visibility-polling`](packages/use-visibility-polling) | Polling that pauses in hidden tabs/offline, no overlap | setInterval + fetch |
 | [`use-previous-diff`](packages/use-previous-diff) | usePrevious + deep diff of what changed | use-previous, deep-diff |
+| [`use-typed-url-state`](packages/use-typed-url-state) | Typed state synced with URL query params | nuqs, use-query-params |
+| [`use-keyboard-scope`](packages/use-keyboard-scope) | Scoped hotkeys (modals block page shortcuts), sequences | react-hotkeys-hook, mousetrap |
 
 Every package ships an `llms.txt` with a compact usage guide for AI coding assistants (`node_modules/<package>/llms.txt`), full JSDoc with examples, and TypeScript types.
 

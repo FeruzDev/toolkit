@@ -1,0 +1,20 @@
+# use-keyboard-scope
+
+> Scoped keyboard shortcuts for React: hotkeys inside <HotkeyScope> (modal, drawer, palette) fire only while it is on top and block global hotkeys. Supports mod (⌘/Ctrl), sequences ("g i"), non-Latin layouts, form-field rules, and a list for help dialogs. Alternative to react-hotkeys-hook / mousetrap.
+
+## Install
+npm install use-keyboard-scope
+
+## API
+- `useHotkey(keys: string | string[], handler: (e: KeyboardEvent) => void, { scope?, enabled?, preventDefault? = true, stopPropagation?, enableOnFormFields?, description? })`
+- `<HotkeyScope name="..." active={bool} blockGlobal={bool = true}>...</HotkeyScope>` / `useHotkeyScope(name, { active, blockGlobal })`
+- `useHotkeyList(): { hotkey, label, description?, scope }[]`, `useActiveScope(): string | null`
+- `formatHotkey(text)`, `parseHotkey(text)`
+- Syntax: 'mod+k', 'ctrl+shift+p', 'escape', '?', 'g i', ['mod+s','ctrl+s']
+
+## Example
+```tsx
+useHotkey('mod+k', () => setOpen(true), { description: 'Command palette' });
+<HotkeyScope name="dialog" active={open}><Dialog /></HotkeyScope>
+// inside Dialog: useHotkey('escape', close)
+```
