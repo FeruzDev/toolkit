@@ -20,7 +20,8 @@ jobs:
           registry-url: https://registry.npmjs.org
           cache: npm
       - run: npm install -g npm@11
-      - run: npm ci
+      # npm install (not ci): the lockfile is generated on Windows; optional platform deps differ on Linux
+      - run: npm install --no-audit --no-fund
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
