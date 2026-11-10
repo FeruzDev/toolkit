@@ -20,6 +20,7 @@ Small, focused, zero-dependency TypeScript packages for everyday web development
 | [`use-typed-url-state`](packages/use-typed-url-state) | Typed state synced with URL query params | nuqs, use-query-params |
 | [`use-keyboard-scope`](packages/use-keyboard-scope) | Scoped hotkeys (modals block page shortcuts), sequences | react-hotkeys-hook, mousetrap |
 | [`react-virtual-log`](packages/react-virtual-log) | Log viewer for millions of lines: tail, search, ANSI | react-lazylog, xterm for read-only logs |
+| [`react-column-resize`](packages/react-column-resize) | Resizable table columns + persistence, auto-fit | react-table plugins, custom drag code |
 
 Every package ships an `llms.txt` with a compact usage guide for AI coding assistants (`node_modules/<package>/llms.txt`), full JSDoc with examples, and TypeScript types.
 

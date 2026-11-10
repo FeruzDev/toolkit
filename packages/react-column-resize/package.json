@@ -1,0 +1,64 @@
+{
+  "name": "react-column-resize",
+  "version": "1.0.0",
+  "description": "Lightweight resizable table columns for React: drag, keyboard and double-click auto-fit, min/max widths, localStorage persistence. Works with plain <table>, CSS grid or any table library. Headless hook + tiny handle component.",
+  "keywords": [
+    "react",
+    "table",
+    "resizable columns",
+    "column resize",
+    "column width",
+    "data grid",
+    "persist",
+    "localstorage",
+    "headless",
+    "accessibility",
+    "tanstack table",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "FeruzDev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeruzDev/toolkit.git",
+    "directory": "packages/react-column-resize"
+  },
+  "homepage": "https://github.com/FeruzDev/toolkit/tree/main/packages/react-column-resize#readme",
+  "bugs": {
+    "url": "https://github.com/FeruzDev/toolkit/issues"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --clean --sourcemap --target es2020 --external react"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>react-column-resize demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; background: #fff; color: #111; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    th { background: #f6f8fa; }
+  </style>
+  <script type="importmap">{ "imports": { "react": "https://esm.sh/react@18.3.1", "react-dom/client": "https://esm.sh/react-dom@18.3.1/client" } }</script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { useColumnResize, ResizeHandle } from '/packages/react-column-resize/dist/index.js';
+    const h = React.createElement;
+    const columns = [
+      { id: 'name', width: 160, minWidth: 80 },
+      { id: 'email', width: 140, minWidth: 80 },
+      { id: 'status', width: 100 },
+    ];
+    const rows = [
+      ['Feruz Jalilov', 'feruz.very.long.email.address@example.com', 'Active'],
+      ['Ali Valiyev', 'ali@example.uz', 'Blocked'],
+    ];
+    function App() {
+      const r = useColumnResize({ columns, storageKey: 'demo-table' });
+      return h('div', null,
+        h('table', r.getTableProps(),
+          h('colgroup', null, columns.map((c) => h('col', { key: c.id, ...r.getColumnProps(c.id) }))),
+          h('thead', null, h('tr', null, columns.map((c) => h('th', { key: c.id, style: { position: 'relative' }, 'data-column-id': c.id }, c.id, h(ResizeHandle, r.getHandleProps(c.id)))))),
+          h('tbody', null, rows.map((row, i) => h('tr', { key: i }, row.map((cell, j) => h('td', { key: j, ...r.getCellProps(columns[j].id) }, cell)))))),
+        h('pre', { id: 'widths' }, JSON.stringify(r.widths)),
+        h('button', { onClick: r.reset }, 'Reset'));
+    }
+    createRoot(document.getElementById('root')).render(h(App));
+  </script>
+</body>
+</html>

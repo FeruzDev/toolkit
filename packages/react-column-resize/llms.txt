@@ -1,0 +1,20 @@
+# react-column-resize
+
+> Headless React hook + tiny handle for resizable table columns: drag (pointer events), keyboard, double-click auto-fit, min/max, localStorage persistence, RTL, a11y separators. Works with <table>, CSS grid, TanStack Table.
+
+## Install
+npm install react-column-resize
+
+## API
+`useColumnResize({ columns: { id, width?, minWidth?, maxWidth?, resizable? }[], storageKey?, storage?, onChange?(widths, final), step? = 10, dir? = 'ltr' })`
+→ `{ widths, totalWidth, resizing, getTableProps(), getColumnProps(id), getCellProps(id), getHandleProps(id, label?), setWidth(id, px), autoFit(id), reset() }`
+`<ResizeHandle {...getHandleProps(id)} color? />` — place inside a `position: relative` header cell.
+
+## Example
+```tsx
+const r = useColumnResize({ columns, storageKey: 'orders' });
+<table {...r.getTableProps()}>
+  <colgroup>{columns.map(c => <col key={c.id} {...r.getColumnProps(c.id)} />)}</colgroup>
+  <thead><tr>{columns.map(c => <th key={c.id} style={{ position: 'relative' }}>{c.label}<ResizeHandle {...r.getHandleProps(c.id, c.label)} /></th>)}</tr></thead>
+</table>
+```
