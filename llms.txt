@@ -1,0 +1,9 @@
+# FeruzDev toolkit
+
+> Zero-dependency TypeScript packages, each published separately on npm. Every package ships its own llms.txt (node_modules/<name>/llms.txt).
+
+## Packages
+- [use-live-announcer](https://github.com/FeruzDev/toolkit/tree/main/packages/use-live-announcer/llms.txt): aria-live announcements for screen readers (React hooks + vanilla).
+- [envguard](https://github.com/FeruzDev/toolkit/tree/main/packages/envguard/llms.txt): .env loading + validation + TypeScript types (dotenv + envalid replacement).
+- [cx-variants](https://github.com/FeruzDev/toolkit/tree/main/packages/cx-variants/llms.txt): cn() + type-safe variants + built-in Tailwind merge (clsx + cva + tailwind-merge replacement).
+- [fetch-kit-ts](https://github.com/FeruzDev/toolkit/tree/main/packages/fetch-kit-ts/llms.txt): 2 KB fetch client with retry, timeout, interceptors (axios/ky replacement).
